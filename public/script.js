@@ -65,7 +65,8 @@ const app = () => {
 
                 song.play()
                 video.play();
-
+                stopMovingSvgAndTimer()
+ 
                 moveSvgAndTimer();
             },
             end: function () {
@@ -75,7 +76,6 @@ const app = () => {
 
                 song.pause()
                 video.pause();
-
             },
         }
     }
@@ -186,9 +186,12 @@ const app = () => {
                 break;
         }
     }
-    // Set value for weather
-    sounds.addEventListener('click',function(){
-        target = event.target;
+    // Weather switcher
+    sounds.addEventListener('click',function(event){
+        let target = event.target,
+            userWindow = window.innerWidth,
+            video = document.querySelector('.vid-container'),
+            nodeVideo = document.querySelector('.nodeVideo');
 
         if(target.className === 'rain_img'){
             timerStorage.state.pause()
@@ -198,7 +201,7 @@ const app = () => {
             timerStorage.state.pause()
             song.src='./sounds/beach.mp3'
             video.src='./video/beach.mp4'
-        }
+        } 
 
     })
 
