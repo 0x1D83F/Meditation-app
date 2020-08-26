@@ -41,12 +41,17 @@ const app = () => {
         seconds: 60,
         state: {
             play: function () {
+                let userWindow = window.innerWidth;
                 play.style.display = 'none';
                 paused.style.display = 'block';
                 replay.style.display = 'none';
 
                 song.play()
-                video.play();
+                if(userWindow < 1200){
+                    return;
+                }else{
+                    video.play();
+                }
             },
             pause: function () {
                 play.style.display = 'block';

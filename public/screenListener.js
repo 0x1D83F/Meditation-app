@@ -14,9 +14,7 @@ window.onload = function () {
             position: absolute;
             z-index: -10;
         `
-    }
-
-    
+    }    
 }
 
 
