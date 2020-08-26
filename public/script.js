@@ -66,7 +66,7 @@ const app = () => {
                 song.play()
                 video.play();
                 stopMovingSvgAndTimer()
- 
+
                 moveSvgAndTimer();
             },
             end: function () {
@@ -81,15 +81,15 @@ const app = () => {
     }
     function changeTimer() {
         //Если это первый запуск таймера то отнять от минуты -1
-        if(timeDisplaySeconds.innerHTML === '00') timerStorage.minutes--;
+        if (timeDisplaySeconds.innerHTML === '00') timerStorage.minutes--;
 
         timerStorage.seconds--;
 
         //Set timer display, if its 10 minutes then set 10 minutes or add null
         timeDisplaySeconds.innerHTML = `${timerStorage.seconds}`;
-        if(timeDisplayMinutes.innerHTML === '10'){
+        if (timeDisplayMinutes.innerHTML === '10') {
             timeDisplayMinutes.innerHTML = `${timerStorage.minutes}`;
-        }else{
+        } else {
             timeDisplayMinutes.innerHTML = `0${timerStorage.minutes}`;
         }
 
@@ -123,7 +123,7 @@ const app = () => {
             return outline.style.strokeDashoffset = stepMove;
         }
     }
-    let startRunnigSroke = runningStroke(); 
+    let startRunnigSroke = runningStroke();
 
     //Create the independent variables for function with setinterval
     let moveSvgTimer;
@@ -187,22 +187,40 @@ const app = () => {
         }
     }
     // Weather switcher
-    sounds.addEventListener('click',function(event){
+    sounds.addEventListener('click', function (event) {
         let target = event.target,
             userWindow = window.innerWidth,
             video = document.querySelector('.vid-container'),
             nodeVideo = document.querySelector('.nodeVideo');
 
-        if(target.className === 'rain_img'){
+        if (target.className === 'rain_img') {
             timerStorage.state.pause()
-            song.src='./sounds/rain.mp3'
-            video.src='./video/rain.mp4'
-        } else if(target.className === 'beach_img') {
+            song.src = './sounds/rain.mp3'
+            video.src = './video/rain.mp4'
+        } else if (target.className === 'beach_img') {
             timerStorage.state.pause()
-            song.src='./sounds/beach.mp3'
-            video.src='./video/beach.mp4'
-        } 
+            song.src = './sounds/beach.mp3'
+            video.src = './video/beach.mp4'
+        }
 
+        //checkup for mobile version
+        if (userWindow < 1200 && target.className === 'rain_img') {
+            video.style.cssText = `
+        background: url('./video/rain.gif') 0 0 / cover no-repeat;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        z-index: -10;
+        `
+        } else if (userWindow < 1200 && target.className === 'beach_img') {
+            video.style.cssText = `
+        background: url('./video/beach.gif') 0 0 / cover no-repeat;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        z-index: -10;
+        `
+        }
     })
 
     document.querySelector('.replay').onclick = function () {
@@ -227,11 +245,11 @@ timeSelect.addEventListener('click', function (event) {
     function highlight(value) {
         getSelect.classList.remove('btn_hightlight');
         // if the button is already highlighted
-        if (selected) { 
+        if (selected) {
             selected.classList.remove('btn_hightlight');
         }
         selected = value;
-        selected.classList.add('btn_hightlight'); 
+        selected.classList.add('btn_hightlight');
     }
 })
 

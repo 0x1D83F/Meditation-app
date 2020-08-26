@@ -21,6 +21,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}
 
 .app{
     height: 100vh;
+    max-height: 100vh;
     max-width: 100vw;
     width: 100vw;
     display: flex;
@@ -181,7 +182,7 @@ button[class*='btn_hightlight']{
     }
     .sound-picker{
         align-items: flex-end;
-        padding-bottom: 25px;
+        padding-bottom: 50px;
     }
     .sound-picker button{
         height: 100px;
